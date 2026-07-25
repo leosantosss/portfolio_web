@@ -16,7 +16,7 @@ export const Navbar = () => {
             <nav className="flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
                 <a href="#about" className="hover:text-accent transition-colors">About</a>
                 <a href="#projects" className="hover:text-accent transition-colors">Projects</a>
-                <a href="/Leonardo_Santos_Resume.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Resume</a>
+                <a href="/resume_2026.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Resume</a>
             </nav>
         </motion.header>
     );
