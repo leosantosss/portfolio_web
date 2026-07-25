@@ -1,44 +1,51 @@
 import { ScrollReveal } from "../animations/ScrollReveal";
+import BorderGlow from "../ui/BorderGlow";
 
 const PROJECTS = [
     {
-        id: "01",
         title: "viZZion",
-        description: "A beautiful web application built with next.js and tailwind.",
-        tags: ["OpenCV", "Python", ""]
+        description: "AI-powered assistive navigation system that turns real-time computer vision into haptic feedback, helping visually impaired users navigate safely — built at HackAI 2026 and awarded the Texas Instruments track.",
+        tags: ["PyTorch", "OpenCV", "Raspberry Pi"],
+        link: "https://github.com/leosantosss/HACKAI2026"
     },
     {
-        id: "02",
-        title: "Nudge",
-        description: "Full-stack financial literacy platform intended for college students that empowers users to make informed decisions about their money.",
-        tags: ["MongoDB", "Google Gemini API", "Auth0"]
+        title: "Chycho's Inventory",
+        description: "Full-stack inventory management system for Chycho's Mexican Food, with AI-powered invoice scanning that reads delivery receipts and reconciles them against the item catalog automatically.",
+        tags: ["Next.js", "MongoDB", "Anthropic API"],
+        link: "https://github.com/leosantosss/inventory-app"
     },
     {
-        id: "03",
         title: "Aggie Agenda",
-        description: "Your unified platform for time management at Texas A&M University.",
-        tags: ["React", "Django", "Supabase"]
+        description: "Aggregates Canvas, syllabi, and campus events into one calendar — reads syllabi to auto-extract deadlines and exports everything straight to Google Calendar for Texas A&M students.",
+        tags: ["React", "Django", "Supabase"],
+        link: "https://www.aggieagenda.com/"
     },
     {
-        id: "04",
         title: "Tech Assist",
-        description: "iOS Mobile app that digitizes database center workflows enabling technicians to resolve server issues through QR-driven, guided repair playbooks.",
-        tags: ["React Native", "Firebase", "Expo"]
+        description: "iOS app built with SwiftUI that helps technicians triage work orders by priority, track active jobs with a built-in timer, and hit daily completion targets.",
+        tags: ["SwiftUI", "Swift", "iOS"],
+        link: "https://github.com/anirvinKotaru/TechAssist"
     },
 ];
 
 export const Projects = () => {
     return (
-        <section id="projects" className="py-32 px-8 relative overflow-hidden border-t border-dashed border-beige dark:border-stone-800">
-
+        <section id="projects" className="relative py-32 px-8">
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="mb-24 text-left border-l-2 border-foreground pl-8">
+                <div className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6 border-l-2 border-accent pl-8">
                     <ScrollReveal direction="up">
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tighter font-serif italic">Projects</h2>
+                        <h2 className="mt-2 text-5xl md:text-7xl font-bold tracking-tighter font-serif italic">
+                            Projects
+                        </h2>
+                    </ScrollReveal>
+                    <ScrollReveal direction="up" delay={0.1}>
+                        <p className="text-muted max-w-sm md:text-right">
+                            A collection of things I&apos;ve built, from full-stack platforms to mobile apps.
+                        </p>
                     </ScrollReveal>
                 </div>
 
-                <div className="border-t border-l border-dashed border-beige dark:border-stone-800 grid grid-cols-1 md:grid-cols-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {PROJECTS.map((project, index) => (
                         <ScrollReveal
                             key={index}
@@ -46,38 +53,42 @@ export const Projects = () => {
                             delay={index * 0.1}
                             className="w-full"
                         >
-                            <div
-                                className={`group relative p-12 border-b border-r border-dashed border-beige dark:border-stone-800 min-h-[400px] flex flex-col justify-between hover:bg-beige/20 dark:hover:bg-stone-900/30 transition-colors cursor-pointer`}
+                            <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block h-full"
                             >
-                                <div className="flex justify-between items-start">
-                                    <span className="font-mono text-sm text-stone-400 group-hover:text-foreground transition-colors">
-                                        {project.id}
-                                    </span>
-                                    <div className="w-2 h-2 rounded-full bg-stone-300 dark:bg-stone-800 group-hover:bg-foreground transition-colors" />
-                                </div>
-
+                            <BorderGlow
+                                className="group h-full hover:-translate-y-1 transition-transform duration-500"
+                                backgroundColor="var(--background)"
+                                borderRadius={24}
+                                glowColor="40 80 80"
+                                colors={["#c084fc", "#f472b6", "#38bdf8"]}
+                            >
+                            <div className="h-full p-10 min-h-[360px] flex flex-col justify-between">
                                 <div className="space-y-4">
-                                    <h3 className="text-3xl font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-500">
+                                    <h3 className="text-3xl font-bold tracking-tight duration-300">
                                         {project.title}
                                     </h3>
-                                    <p className="text-stone-500 dark:text-stone-400 leading-relaxed max-w-sm">
+                                    <p className="text-muted leading-relaxed max-w-sm">
                                         {project.description}
                                     </p>
                                 </div>
 
-                                <div className="pt-8">
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tags.map((tag, i) => (
-                                            <span key={i} className="font-mono text-[10px] uppercase tracking-tighter px-2 py-1 border border-stone-200 dark:border-stone-800 text-stone-500">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    <div className="mt-6 flex items-center gap-2 text-xs font-mono uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
-                                        View Details <span className="text-lg">→</span>
-                                    </div>
+                                <div className="pt-8 flex flex-wrap gap-2">
+                                    {project.tags.map((tag, i) => (
+                                        <span
+                                            key={i}
+                                            className="font-mono text-[10px] uppercase tracking-tighter px-3 py-1.5 rounded-full bg-accent-soft text-accent"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
                                 </div>
                             </div>
+                        </BorderGlow>
+                            </a>
                         </ScrollReveal>
                     ))}
                 </div>

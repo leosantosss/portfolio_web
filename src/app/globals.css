@@ -1,32 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4ece4;
-  --foreground: #3c2a21;
-  --beige-accent: #dcd0c0;
-  --white-accent: #ffffff;
+  --background: #05070a;
+  --foreground: #edf0f7;
+  --accent: #33448c;
+  --accent-soft: #131b3a;
+  --muted: #8a91a8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-beige: var(--beige-accent);
-  --color-white-acc: var(--white-accent);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-muted: var(--muted);
   --font-sans: var(--font-outfit);
   --font-serif: var(--font-playfair);
   --font-mono: var(--font-jetbrains);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #22180f;
-    --foreground: #e5d3b3;
-    --beige-accent: #2d241c;
-    --white-accent: #ffffff;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  50.01%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s steps(1) infinite;
 }
